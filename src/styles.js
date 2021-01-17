@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+
+
 export const ButtonStld = styled.button`   
     
     font-size: 1em;
@@ -35,6 +37,7 @@ export const InputElement = styled.input`
     outline: none;
     border: 1px solid #ccc;
     background-color: white;
+    margin: 6px 0 6px 0;
     padding: 6px 10px;
     display: block;
     width: 100%;
@@ -42,12 +45,52 @@ export const InputElement = styled.input`
 `;
 
 export const InputStl = styled(InputElement)`
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+    // width: 100%;
+    //padding: 10px;
+    //margin: 0px;
+    //box-sizing: border-box;
 `;
 
-export const Label = styled.label`
+export const FormGroup = styled.div`
+
+    margin-top: 8px;
+
+    input, select, textarea{
+        outline: none;
+        border: 1px solid #ccc;
+        background-color: white;
+        //margin: 6px 0 6px 0;
+        
+        padding: 6px 10px;
+        display: block;
+        width: 100%;
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing:content-box;
+        box-sizing: border-box;
+        height: 30px;
+        /* font-family: inherit; 
+        font-size: inherit; */
+    }
+
+    label{
+        font-weight: bold;
+        display: block;
+    }
+
+
+    ${props =>
+            (props.position != null && props.position.gColStart != null && props.position.gColEnd != null && props.position.gRowStart != null && props.position.gRowEnd != null)
+             &&
+                css`
+                    grid-column-start: ${props.position.gColStart};
+                    grid-column-end: ${props.position.gColEnd};
+                    grid-row-start: ${props.position.gRowStart};
+                    grid-row-end: ${props.position.gRowEnd};
+                `
+    }
+`;
+
+export const LabelStl = styled.label`
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
@@ -80,7 +123,6 @@ export const Title = styled.h1`
 `;
 
 export const TitleSmall = styled(Title)`
-
     font-style:italic
 `;
 
@@ -91,6 +133,41 @@ export const AdminBoardStl = styled.div`
     box-shadow: 0 2px 3px #ccc;
     background-color: white;
     display: grid;
-    grid-template-columns: 5%  auto  5%;
-    grid-template-rows: 5% 25% auto 5%;
+        grid-template-columns: 5% 1fr  5%;
+        grid-template-rows: 5% 1fr 2fr 5%;
+        grid-template-areas: 
+            'top       top         top
+            upper-left filter-form upper-right
+            down-left  result-list down-right
+            bottom     bottom       bottom';
+    
 `;
+
+export const FilterFormStl = styled.div`
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+`;
+
+export const ResultListStl = styled.div`
+    grid-column-start: 3;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+`;
+
+export const GridLayout = styled.div`
+    display: grid;
+    grid-template-columns: repeat(${props => props.colNum || '1'}, 1fr);
+    grid-template-rows: repeat(${props => props.rowNum || '1'}, 2fr) ;
+    column-gap: 5px;
+    row-gap: 5px;
+`;
+
+export const PagedListStl = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr, 3fr, 1fr
+`;
+
