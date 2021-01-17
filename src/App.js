@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+// import { Title, TitleSmall, Button } from './styles';
+import Layout from './hoc/Layout/Layout';
+//import Auth from './containers/Auth/Auth';
+import AdminBoard from './containers/AdminBoard/AdminBoard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      {/* <Title fontSize={50}>
+        Hello
+        <span>minor text</span>
+      </Title>
+
+      <TitleSmall>Small text</TitleSmall>
+
+      <Button >Normal</Button>
+
+      <Button primary>Primary</Button> */}
+
+      {/* <Auth/> */}
+      <AdminBoard/>
+
+    </Layout>
   );
 }
 
